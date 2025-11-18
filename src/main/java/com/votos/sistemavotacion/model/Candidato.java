@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
 import java.util.List;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 // Anotaciones de Lombok
 @Data // Genera getters, setters, toString, equals y hashCode
@@ -32,6 +34,7 @@ public class Candidato {
     private String biografia;
 
     @Column(name = "propuestas")
+    @JdbcTypeCode(SqlTypes.ARRAY) // Indica a Hibernate que mapee esto como un ARRAY de SQL
     private List<String> propuestas;
 
     @Column(name = "cargo", length = 50, nullable = false)
